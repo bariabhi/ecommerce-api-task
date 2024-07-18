@@ -1,0 +1,22 @@
+version: '3.8'  # Update this to a newer version if available
+
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app:/var/www/html
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ecommerce-api
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
